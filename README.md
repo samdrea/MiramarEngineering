@@ -1,0 +1,22 @@
+# Hovercraft Project
+
+<img src="https://github.com/sammydrea/MiramarEngineering/assets/69533601/dda3c4ae-1353-4f9d-8d2e-f32c0c43bbfe" width="60%" height="60%">
+
+## Code Implementation Overview: 
+This project involves connecting a PS4 controller to an Arduino Nano 33 IoT's Bluetooth receiver for controlling the hovercraft. 
+The final sketch enables control of the lifting fans using the controller's D-pad, control of the thrusting fan using the joysticks for precise navigation, 
+and control of a stepper motor contraption to grab and release objects using the X and Triangle buttons.
+
+## a. Bluetooth Connection:
+The Bluetooth connection between the Arduino Nano 33 IoT and the PS4 controller is enabled by the [Bluepad32 library](https://gitlab.com/ricardoquesada/bluepad32-arduino) written by Ricardo Quesada. It initializes the Bluetooth module and defines the necessary variables and constants to handle the communication
+
+## b. Fan Control:
+The 4 lifting fans are controlled by the up and down buttons on D-pad on the PS4 controller. The up button increments while the down button decrements the fan speed accordingly. Because the fans are set up to counteract the torque produced from the motors, the 2 fans on one diagonal will spin in the opposite direction as the other 2 fans of the opposing diagonal.
+
+## c. Thrust Control:
+The PS4 controller's joysticks controls the thrusting fans, allowing the hovercraft to manuever with precision. The Arduino Nano reads the joystick values of the PS4 and maps it to the speeds allowed by the motors. 
+Due to the nature of joystick drifts, a "deadzone" was introduced in the code to prevent unintended spinning of the thrusting fan when the joysticks are in neutral position.
+
+## d. Stepper Motor Control:
+The hardware team created a rack and pinion contraption that utilizes a stepper motor to grab and release objects. The final code maps the X and Triangle buttons to turn the stepper motor incremently. 
+Therefore, the hovercraft driver can grab or release the objects by holding down the buttons to get the desired grip.
